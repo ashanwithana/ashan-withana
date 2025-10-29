@@ -17,12 +17,15 @@ import {
     useColorModeValue,
     Divider,
     Avatar,
-    Flex
+    Flex,
+    Image,
+    Link
 } from '@chakra-ui/react'
-import { FiCalendar, FiMapPin, FiAward } from 'react-icons/fi'
+import { FiCalendar, FiMapPin, FiAward, FiBriefcase, FiExternalLink } from 'react-icons/fi'
 import { FaGraduationCap } from 'react-icons/fa'
 import { MainLayout } from '@components/layouts/MainLayout'
 import { config } from '@config/config'
+import { workExperience, formatDateRange, calculateDuration } from '@data/experience'
 
 interface Education {
     degree: string
@@ -90,21 +93,37 @@ export default function AboutPage() {
 
                         {/* Header Section */}
                         <VStack spacing={6} textAlign="center">
-                            <Avatar
-                                size="2xl"
-                                name="Ashan Withana"
-                                src="/img/profile-avatar.jpg"
-                                border="4px solid"
-                                borderColor={accentColor}
-                            />
+                            <Box
+                                position="relative"
+                                width="200px"
+                                height="200px"
+                                bg={cardBg}
+                                borderRadius="md"
+                                shadow={`8px 8px 0px 0px ${useColorModeValue('#6366f1', '#a855f7')}`}
+                                transition='all 0.1s ease-in-out'
+                                cursor="pointer"
+                                _hover={{
+                                    shadow: 'none',
+                                    transform: 'translate(8px, 8px)'
+                                }}
+                                overflow="hidden"
+                            >
+                                <Image
+                                    src="/img/DSC03956.JPEG"
+                                    alt="Ashan Withana"
+                                    width="100%"
+                                    height="100%"
+                                    objectFit="cover"
+                                />
+                            </Box>
                             <VStack spacing={2}>
                                 <Heading
                                     as="h1"
                                     variant="sectionTitle"
-                                    size="2xl"
+                                    size="xl"
                                     fontWeight="bold"
                                 >
-                                    About Me
+                                    ASHAN WITHANA
                                 </Heading>
                                 <Text
                                     fontSize="xl"
@@ -152,6 +171,150 @@ export default function AboutPage() {
                                 </Text>
                             </VStack>
                         </Box>
+
+                        {/* Work Experience Section */}
+                        <VStack spacing={6} align="stretch">
+                            <Heading as="h2" size="xl" variant="sectionTitle">
+                                <Icon as={FiBriefcase} mr={3} />
+                                Work Experience
+                            </Heading>
+
+                            <VStack spacing={6} align="stretch">
+                                {workExperience.map((job) => (
+                                    <Box
+                                        key={job.id}
+                                        bg={cardBg}
+                                        p={{ base: 6, md: 8 }}
+                                        borderColor={useColorModeValue('black', 'white')}
+                                        border='1px solid'
+                                        shadow={`8px 8px 0px 0px ${useColorModeValue('#6366f1', '#a855f7')}`}
+                                        transition='all 0.1s ease-in-out'
+                                        _hover={{
+                                            shadow: 'none',
+                                            transform: 'translate(8px, 8px)'
+                                        }}
+                                    >
+                                        <VStack spacing={6} align="stretch">
+                                            {/* Header with Company Logo and Details */}
+                                            <Flex
+                                                direction={{ base: 'column', md: 'row' }}
+                                                justify="space-between"
+                                                align={{ base: 'flex-start', md: 'flex-start' }}
+                                                gap={4}
+                                            >
+                                                <HStack spacing={4} align="flex-start">
+                                                    <Image
+                                                        src={job.logo}
+                                                        alt={`${job.company} logo`}
+                                                        boxSize="60px"
+                                                        borderRadius="md"
+                                                        objectFit="cover"
+                                                        border="2px solid"
+                                                        borderColor={borderColor}
+                                                    />
+                                                    <VStack spacing={1} align="flex-start">
+                                                        <Heading
+                                                            as="h3"
+                                                            size="lg"
+                                                            color={accentColor}
+                                                            fontFamily="heading"
+                                                            fontWeight="bold"
+                                                        >
+                                                            {job.position}
+                                                        </Heading>
+                                                        <HStack spacing={2} align="center">
+                                                            <Text
+                                                                fontWeight="semibold"
+                                                                color={useColorModeValue('black', 'white')}
+                                                                fontSize="md"
+                                                            >
+                                                                {job.company}
+                                                            </Text>
+                                                            {job.companyUrl && (
+                                                                <Link
+                                                                    href={job.companyUrl}
+                                                                    isExternal
+                                                                    color={textColor}
+                                                                    _hover={{ color: accentColor }}
+                                                                >
+                                                                    <Icon as={FiExternalLink} boxSize={3} />
+                                                                </Link>
+                                                            )}
+                                                        </HStack>
+                                                    </VStack>
+                                                </HStack>
+
+                                                <VStack spacing={2} align={{ base: 'flex-start', md: 'flex-end' }}>
+                                                    <Text
+                                                        fontSize="sm"
+                                                        color={textColor}
+                                                        fontWeight="medium"
+                                                    >
+                                                        {formatDateRange(job.startDate, job.endDate)}
+                                                    </Text>
+                                                    <Text fontSize="xs" color={textColor}>
+                                                        {calculateDuration(job.startDate, job.endDate)}
+                                                    </Text>
+                                                    <HStack spacing={1}>
+                                                        <Icon as={FiMapPin} color={textColor} boxSize={3} />
+                                                        <Text fontSize="sm" color={textColor}>
+                                                            {job.location}
+                                                        </Text>
+                                                    </HStack>
+                                                </VStack>
+                                            </Flex>
+
+                                            {/* Job Description */}
+                                            <VStack spacing={3} align="stretch">
+                                                {job.description.map((desc, index) => (
+                                                    <Text
+                                                        key={index}
+                                                        fontSize="sm"
+                                                        color={textColor}
+                                                        lineHeight="tall"
+                                                        pl={4}
+                                                        position="relative"
+                                                        _before={{
+                                                            content: '"•"',
+                                                            position: 'absolute',
+                                                            left: 0,
+                                                            color: useColorModeValue('#6366f1', '#a855f7'),
+                                                            fontWeight: 'bold'
+                                                        }}
+                                                    >
+                                                        {desc}
+                                                    </Text>
+                                                ))}
+                                            </VStack>
+
+                                            {/* Technologies */}
+                                            <Box>
+                                                <Text
+                                                    fontSize="sm"
+                                                    fontWeight="semibold"
+                                                    color={accentColor}
+                                                    mb={2}
+                                                >
+                                                    Technologies:
+                                                </Text>
+                                                <Flex wrap="wrap" gap={2}>
+                                                    {job.technologies.map((tech, index) => (
+                                                        <Badge
+                                                            key={index}
+                                                            variant="outline"
+                                                            colorScheme="gray"
+                                                            fontSize="xs"
+                                                        >
+                                                            {tech}
+                                                        </Badge>
+                                                    ))}
+                                                </Flex>
+                                            </Box>
+                                        </VStack>
+                                    </Box>
+                                ))}
+                            </VStack>
+                        </VStack>
 
                         {/* Education Section */}
                         <VStack spacing={6} align="stretch">

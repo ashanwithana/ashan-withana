@@ -65,24 +65,33 @@ export const Banner: React.FC = () => {
         </NextLink>
       </VStack>
 
-      {/* ASCII Art Name */}
-      <Box
-        position='absolute'
-        bottom='8'
-        right='8'
-        display={{ base: 'none', lg: 'block' }}
-        opacity='0.3'
-        pointerEvents='none'
-      >
-        <Text
-          fontFamily='monospace'
-          fontSize='sm'
-          lineHeight='1'
-          color='white'
-          whiteSpace='pre'
-          textShadow='2px 2px 4px rgba(0,0,0,0.5)'
+      {/* ASCII Art Name - Clickable */}
+      <NextLink href='/about' passHref legacyBehavior>
+        <Box
+          as='a'
+          position='absolute'
+          bottom='8'
+          right='8'
+          display={{ base: 'none', lg: 'block' }}
+          opacity='0.3'
+          cursor='pointer'
+          transition='all 0.3s ease'
+          _hover={{
+            opacity: '0.6',
+            transform: 'scale(1.05)',
+          }}
+          title='Click to learn more about me'
+          onClick={() => posthog.capture('ascii_name_clicked')}
         >
-          {`  ▄▄▄       ██████  ██░ ██  ▄▄▄       ███▄    █ 
+          <Text
+            fontFamily='monospace'
+            fontSize='sm'
+            lineHeight='1'
+            color='white'
+            whiteSpace='pre'
+            textShadow='2px 2px 4px rgba(0,0,0,0.5)'
+          >
+            {`  ▄▄▄       ██████  ██░ ██  ▄▄▄       ███▄    █ 
  ▒████▄   ▒██    ▒ ▓██░ ██▒▒████▄     ██ ▀█   █ 
  ▒██  ▀█▄ ░ ▓██▄   ▒██▀▀██░▒██  ▀█▄  ▓██  ▀█ ██▒
  ░██▄▄▄▄██  ▒   ██▒░▓█ ░██ ░██▄▄▄▄██ ▓██▒  ▐▌██▒
@@ -91,8 +100,9 @@ export const Banner: React.FC = () => {
    ▒   ▒▒ ░ ░▒  ░ ░ ▒ ░▒░ ░  ▒   ▒▒ ░░ ░░   ░ ▒░
    ░   ▒  ░  ░  ░   ░  ░░ ░  ░   ▒      ░   ░ ░ 
        ░  ░     ░   ░  ░  ░      ░  ░         ░`}
-        </Text>
-      </Box>
+          </Text>
+        </Box>
+      </NextLink>
     </MotionFlex>
   )
 }
