@@ -17,6 +17,7 @@ import { HiOutlineMenuAlt4 } from 'react-icons/hi'
 import { VscChromeClose } from 'react-icons/vsc'
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
 import { MdLightMode, MdDarkMode } from 'react-icons/md'
+import { FiHome } from 'react-icons/fi'
 import { usePostHog } from 'posthog-js/react'
 import { NAME, config } from '@config/config'
 import { Menu } from './Menu'
@@ -58,30 +59,7 @@ export const Header: React.FC = () => {
           border='1px solid'
           borderColor={borderColor}
         >
-          {/* Navigation Links */}
-          <NextLink href='/' passHref legacyBehavior>
-            <Button
-              as='a'
-              variant='ghost'
-              size='sm'
-              fontWeight='medium'
-              color={isActiveRoute('/') ? activeTextColor : textColor}
-              bg={isActiveRoute('/') ? activeBg : 'transparent'}
-              borderRadius='full'
-              px='4'
-              py='2'
-              fontSize='sm'
-              _hover={{
-                bg: activeBg,
-                color: hoverTextColor,
-                transform: 'translateY(-1px)'
-              }}
-              transition='all 0.2s ease-in-out'
-            >
-              {t('home')}
-            </Button>
-          </NextLink>
-
+          {/* Navigation Links - Left side */}
           <NextLink href='/about' passHref legacyBehavior>
             <Button
               as='a'
@@ -151,6 +129,27 @@ export const Header: React.FC = () => {
             </Button>
           </NextLink>
 
+          {/* Home Icon - Center */}
+          <NextLink href='/' passHref legacyBehavior>
+            <IconButton
+              as='a'
+              aria-label='Home'
+              icon={<FiHome />}
+              variant='ghost'
+              size='sm'
+              color={isActiveRoute('/') ? activeTextColor : textColor}
+              bg={isActiveRoute('/') ? activeBg : 'transparent'}
+              borderRadius='full'
+              _hover={{
+                bg: activeBg,
+                color: hoverTextColor,
+                transform: 'translateY(-1px) scale(1.05)'
+              }}
+              transition='all 0.2s ease-in-out'
+            />
+          </NextLink>
+
+          {/* Navigation Links - Right side */}
           <NextLink href='/contributions' passHref legacyBehavior>
             <Button
               as='a'
