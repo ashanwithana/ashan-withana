@@ -1,6 +1,14 @@
 import NextLink from 'next/link'
 import { useTranslation } from 'next-i18next'
-import { Button, chakra, Flex, Heading, VStack, Box, Text } from '@chakra-ui/react'
+import {
+  Button,
+  chakra,
+  Flex,
+  Heading,
+  VStack,
+  Box,
+  Text,
+} from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { usePostHog } from 'posthog-js/react'
 import { config } from '@config/config'

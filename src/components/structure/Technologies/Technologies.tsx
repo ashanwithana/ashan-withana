@@ -1,4 +1,3 @@
-import { useTranslation } from 'next-i18next'
 import {
   Box,
   Container,
@@ -6,7 +5,7 @@ import {
   SimpleGrid,
   VStack,
   Text,
-  useColorModeValue
+  useColorModeValue,
 } from '@chakra-ui/react'
 import { motion, type Variants } from 'framer-motion'
 import { SkillGroup } from './SkillGroup'
@@ -27,8 +26,6 @@ const container: Variants = {
 const MotionSimpleGrid = motion(SimpleGrid)
 
 export const Technologies: React.FC = () => {
-  const { t } = useTranslation('common')
-
   return (
     <VStack
       as='section'
@@ -66,8 +63,8 @@ export const Technologies: React.FC = () => {
             mx='auto'
             px={{ base: 4, md: 0 }}
           >
-            A comprehensive toolkit of modern technologies and frameworks
-            I use to build scalable, high-performance applications.
+            A comprehensive toolkit of modern technologies and frameworks I use
+            to build scalable, high-performance applications.
           </Text>
 
           {/* Skills Grid */}

@@ -33,16 +33,18 @@ export const config: Config = {
     twitter: {
       cardType: 'summary',
     },
-    languageAlternates: [
-      { hrefLang: 'en', href: 'https://ashanwithana.dev' },
-    ],
+    languageAlternates: [{ hrefLang: 'en', href: 'https://ashanwithana.dev' }],
     additionalMetaTags: [
       { httpEquiv: 'x-ua-compatible', content: 'IE=edge; chrome=1' },
       { property: 'msapplication-TileColor', content: '#2D3748' },
       { property: 'msapplication-config', content: '/icons/browserconfig.xml' },
       { property: 'theme-color', content: '#2D3748' },
       { name: 'author', content: 'Ashan Withana' },
-      { name: 'keywords', content: 'Software Engineer, Backend Developer, Laravel, .NET, Python, API Development' },
+      {
+        name: 'keywords',
+        content:
+          'Software Engineer, Backend Developer, Laravel, .NET, Python, API Development',
+      },
     ],
     additionalLinkTags: [
       {

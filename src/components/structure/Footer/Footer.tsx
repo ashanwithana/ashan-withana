@@ -1,5 +1,13 @@
-import { useTranslation } from 'next-i18next'
-import { Flex, Link, Text, HStack, IconButton, Stack, useColorModeValue, useColorMode } from '@chakra-ui/react'
+import {
+  Flex,
+  Link,
+  Text,
+  HStack,
+  IconButton,
+  Stack,
+  useColorModeValue,
+  useColorMode,
+} from '@chakra-ui/react'
 import { VscArrowUp } from 'react-icons/vsc'
 import { MdLightMode, MdDarkMode } from 'react-icons/md'
 import { usePostHog } from 'posthog-js/react'
@@ -12,7 +20,6 @@ const links: { name: string; href: string }[] = [
 ]
 
 export const Footer: React.FC = () => {
-  const { t } = useTranslation('common')
   const posthog = usePostHog()
   const { colorMode, toggleColorMode } = useColorMode()
 
@@ -41,9 +48,7 @@ export const Footer: React.FC = () => {
         mb={{ base: '16', md: 0 }}
       >
         <Text casing='uppercase'>{config.copyright}</Text>
-        <Text casing='uppercase'>
-          {t('made-in-mtl')}
-        </Text>
+        <Text casing='uppercase'>Sri Lanka 🇱🇰</Text>
       </Stack>
       <Stack
         direction={{ base: 'column', md: 'row' }}
@@ -72,20 +77,25 @@ export const Footer: React.FC = () => {
         </HStack>
         <HStack spacing='4'>
           <IconButton
-            aria-label={colorMode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-            title={colorMode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-            icon={colorMode === 'light' ? <MdDarkMode /> : <MdLightMode />}
+            aria-label={
+              colorMode === 'light'
+                ? 'Switch to dark mode'
+                : 'Switch to light mode'
+            }
+            icon={<Text>{colorMode === 'light' ? '🌙' : '☀️'}</Text>}
             variant='minimal'
             size='icon'
             onClick={() => {
               toggleColorMode()
-              posthog.capture('color_mode_toggled', { mode: colorMode === 'light' ? 'dark' : 'light' })
+              posthog.capture('color_mode_toggled', {
+                mode: colorMode === 'light' ? 'dark' : 'light',
+              })
             }}
           />
           <IconButton
-            aria-label={t('go-to-top')}
-            title={t('go-to-top')}
-            icon={<VscArrowUp />}
+            aria-label='Go to top'
+            title='Go to top'
+            icon={<Text>↑</Text>}
             variant='minimal'
             size='icon'
             onClick={() => window.scrollTo(0, 0)}

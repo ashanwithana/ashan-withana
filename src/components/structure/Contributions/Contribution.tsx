@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next'
+import React from 'react'
 import {
   Badge,
   Box,
@@ -41,8 +41,6 @@ export const Contribution: React.FC<ContributionProps> = ({
   language,
   company,
 }) => {
-  const { t } = useTranslation('common')
-
   return (
     <LinkBox
       p='4'
@@ -64,27 +62,27 @@ export const Contribution: React.FC<ContributionProps> = ({
             </Text>
           </HStack>
           {company && (
-            <Tooltip label={`Built at ${company.name}`} placement="top">
+            <Tooltip label={`Built at ${company.name}`} placement='top'>
               <Box ml='2' flexShrink={0}>
                 <Link href={company.website} isExternal>
                   <Image
                     src={company.logo}
                     alt={`${company.name} logo`}
-                    width="24px"
-                    height="24px"
-                    borderRadius="md"
+                    width='24px'
+                    height='24px'
+                    borderRadius='md'
                     fallback={
                       <Box
-                        width="24px"
-                        height="24px"
-                        bg="gray.200"
-                        borderRadius="md"
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="center"
-                        fontSize="xs"
-                        fontWeight="bold"
-                        color="gray.600"
+                        width='24px'
+                        height='24px'
+                        bg='gray.200'
+                        borderRadius='md'
+                        display='flex'
+                        alignItems='center'
+                        justifyContent='center'
+                        fontSize='xs'
+                        fontWeight='bold'
+                        color='gray.600'
                       >
                         {company.name.charAt(0)}
                       </Box>
@@ -96,7 +94,7 @@ export const Contribution: React.FC<ContributionProps> = ({
           )}
         </Flex>
         <Flex mt='2' mb='4'>
-          <Badge colorScheme={role.color}>{t(role.label)}</Badge>
+          <Badge colorScheme={role.color}>{role.label}</Badge>
         </Flex>
         <Text flex='1' mb='4'>
           {description.en}
@@ -114,7 +112,15 @@ export const Contribution: React.FC<ContributionProps> = ({
               </Tag>
             ))}
           </HStack>
-          <Icon as={language.icon} color={language.color} boxSize='6' />
+          <Box
+            color={language.color}
+            fontSize='24px'
+            display='flex'
+            alignItems='center'
+            fontWeight='bold'
+          >
+            •
+          </Box>
         </Flex>
       </Flex>
     </LinkBox>

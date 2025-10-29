@@ -5,7 +5,7 @@ import {
   Text,
   Tooltip,
   useColorModeValue,
-  useDisclosure
+  useDisclosure,
 } from '@chakra-ui/react'
 import type { Skill } from '@utils/types'
 
@@ -51,10 +51,10 @@ export const SkillBox: React.FC<SkillProps> = ({
           bg: skillHoverBg,
           borderColor: color,
           transform: 'translateY(-2px) scale(1.02)',
-          boxShadow: `0 4px 12px ${color}30`
+          boxShadow: `0 4px 12px ${color}30`,
         }}
         _active={{
-          transform: 'translateY(-1px) scale(1.01)'
+          transform: 'translateY(-1px) scale(1.01)',
         }}
         onMouseEnter={() => {
           setBorderColor(color)
@@ -69,13 +69,16 @@ export const SkillBox: React.FC<SkillProps> = ({
         height='16'
       >
         <Center height='full' flexDirection='column' gap='1'>
-          <Icon
-            as={icon}
-            aria-label={name}
-            boxSize='6'
+          <Box
             color={color}
+            fontSize='24px'
+            display='flex'
+            alignItems='center'
+            fontWeight='bold'
             transition='all 0.2s ease-in-out'
-          />
+          >
+            •
+          </Box>
           <Text
             fontSize='2xs'
             fontWeight='medium'

@@ -1,4 +1,12 @@
-import { Stack, HStack, IconButton, Link, Divider, useColorModeValue } from '@chakra-ui/react'
+import {
+  Stack,
+  HStack,
+  IconButton,
+  Link,
+  Divider,
+  useColorModeValue,
+  Text,
+} from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
 import { usePostHog } from 'posthog-js/react'
@@ -6,13 +14,13 @@ import { config } from '@config/config'
 import { NavItem, type NavItemProps } from './NavItem'
 
 const navItems: Omit<NavItemProps, 'onClose'>[] = [
-  { name: 'home', href: '/' },
-  { name: 'about', href: '/about' },
-  { name: 'projects', href: '/projects' },
-  { name: 'services', href: '/services' },
-  { name: 'contributions', href: '/contributions' },
-  { name: 'blog', href: '/blog' },
-  { name: 'contact', href: '/#contact' },
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'Services', href: '/services' },
+  { name: 'Contributions', href: '/contributions' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contact', href: '/#contact' },
 ]
 
 const MotionStack = motion(Stack)
@@ -28,7 +36,10 @@ export const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
     'linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(168, 85, 247, 0.05) 50%, rgba(236, 72, 153, 0.05) 100%), rgba(255, 255, 255, 0.95)',
     'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 50%, rgba(236, 72, 153, 0.1) 100%), rgba(26, 32, 44, 0.95)'
   )
-  const borderColor = useColorModeValue('rgba(99, 102, 241, 0.15)', 'rgba(168, 85, 247, 0.25)')
+  const borderColor = useColorModeValue(
+    'rgba(99, 102, 241, 0.15)',
+    'rgba(168, 85, 247, 0.25)'
+  )
 
   return (
     <AnimatePresence initial={false}>
@@ -72,7 +83,7 @@ export const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
                 target='_blank'
                 rel='noopener noreferrer'
                 aria-label='GitHub Profile'
-                icon={<FaGithub />}
+                icon={<Text>🐙</Text>}
                 variant='ghost'
                 size='lg'
                 borderRadius='full'
@@ -80,7 +91,7 @@ export const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
                 _hover={{
                   bg: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
                   color: 'white',
-                  transform: 'scale(1.1)'
+                  transform: 'scale(1.1)',
                 }}
                 transition='all 0.2s ease-in-out'
                 onClick={() => {
@@ -94,7 +105,7 @@ export const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
                 target='_blank'
                 rel='noopener noreferrer'
                 aria-label='LinkedIn Profile'
-                icon={<FaLinkedinIn />}
+                icon={<Text>💼</Text>}
                 variant='ghost'
                 size='lg'
                 borderRadius='full'
@@ -102,11 +113,13 @@ export const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
                 _hover={{
                   bg: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
                   color: 'white',
-                  transform: 'scale(1.1)'
+                  transform: 'scale(1.1)',
                 }}
                 transition='all 0.2s ease-in-out'
                 onClick={() => {
-                  posthog.capture('linkedin_clicked', { location: 'mobile_menu' })
+                  posthog.capture('linkedin_clicked', {
+                    location: 'mobile_menu',
+                  })
                   onClose()
                 }}
               />

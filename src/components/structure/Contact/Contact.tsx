@@ -1,4 +1,3 @@
-import { useTranslation } from 'next-i18next'
 import {
   Box,
   Button,
@@ -17,7 +16,9 @@ import {
   VStack,
   Icon,
 } from '@chakra-ui/react'
-import { FiSend, FiLinkedin, FiMail } from 'react-icons/fi'
+import { FiSend, FiMail } from 'react-icons/fi'
+import { FaLinkedinIn } from 'react-icons/fa'
+import React from 'react'
 import { usePostHog } from 'posthog-js/react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -35,7 +36,6 @@ const ContactMeSchema = z
 type ContactMeData = z.infer<typeof ContactMeSchema>
 
 export const Contact: React.FC = () => {
-  const { t } = useTranslation('common')
   const posthog = usePostHog()
   const toast = useToast()
 
@@ -68,8 +68,8 @@ export const Contact: React.FC = () => {
       posthog.identify(data.email)
 
       toast({
-        title: t('message-sent'),
-        description: t('message-text'),
+        title: 'Message Sent.',
+        description: "I'll respond to you promptly.",
         status: 'success',
         duration: 7500,
         isClosable: true,
@@ -78,7 +78,7 @@ export const Contact: React.FC = () => {
       reset()
     } catch (error) {
       toast({
-        title: t('message-error'),
+        title: 'There was an error sending your message.',
         status: 'error',
         duration: 5000,
         isClosable: true,
@@ -112,17 +112,20 @@ export const Contact: React.FC = () => {
           color={useColorModeValue('black', 'white')}
           fontWeight='bold'
         >
-          {t('contact-me')}
+          Contact Me
         </Heading>
 
         {/* Contact Options */}
         <VStack spacing={{ base: '3', md: '4' }} align='flex-start' w='full'>
           <HStack spacing={{ base: '3', md: '4' }} align='center'>
-            <Icon
-              as={FiMail}
-              boxSize={{ base: '4', md: '5' }}
+            <Box
+              fontSize={{ base: '16px', md: '20px' }}
               color={useColorModeValue('black', 'white')}
-            />
+              display='flex'
+              alignItems='center'
+            >
+              <Text>✉️</Text>
+            </Box>
             <VStack spacing='1' align='flex-start'>
               <Text
                 fontWeight='semibold'
@@ -144,11 +147,14 @@ export const Contact: React.FC = () => {
           </HStack>
 
           <HStack spacing={{ base: '3', md: '4' }} align='center'>
-            <Icon
-              as={FiLinkedin}
-              boxSize={{ base: '4', md: '5' }}
+            <Box
+              fontSize={{ base: '16px', md: '20px' }}
               color={useColorModeValue('black', 'white')}
-            />
+              display='flex'
+              alignItems='center'
+            >
+              <Text>💼</Text>
+            </Box>
             <VStack spacing='1' align='flex-start'>
               <Text
                 fontWeight='semibold'
@@ -173,7 +179,12 @@ export const Contact: React.FC = () => {
         </VStack>
       </VStack>
 
-      <VStack as='form' onSubmit={onSubmit} flex='1' spacing={{ base: '4', md: '6' }}>
+      <VStack
+        as='form'
+        onSubmit={onSubmit}
+        flex='1'
+        spacing={{ base: '4', md: '6' }}
+      >
         <FormControl isInvalid={!!errors.email}>
           <FormLabel
             fontWeight='semibold'
@@ -181,10 +192,10 @@ export const Contact: React.FC = () => {
             fontSize={{ base: 'sm', md: 'md' }}
             mb={2}
           >
-            {t('email')}
+            Email
           </FormLabel>
           <Input
-            placeholder={t('email-placeholder')}
+            placeholder='your_email@gmail.com'
             {...register('email')}
             bg={inputBg}
             border='2px solid'
@@ -201,7 +212,10 @@ export const Contact: React.FC = () => {
             }}
             transition='all 0.2s ease-in-out'
           />
-          <FormErrorMessage color={useColorModeValue('black', 'white')} fontSize='sm'>
+          <FormErrorMessage
+            color={useColorModeValue('black', 'white')}
+            fontSize='sm'
+          >
             {errors.email?.message}
           </FormErrorMessage>
         </FormControl>
@@ -212,11 +226,11 @@ export const Contact: React.FC = () => {
             fontSize={{ base: 'sm', md: 'md' }}
             mb={2}
           >
-            {t('message')}
+            Message
           </FormLabel>
           <Textarea
             minH={{ base: '32', md: '40' }}
-            placeholder={t('message-placeholder')}
+            placeholder="Let's build something amazing together."
             {...register('message')}
             bg={inputBg}
             border='2px solid'
@@ -234,7 +248,10 @@ export const Contact: React.FC = () => {
             }}
             transition='all 0.2s ease-in-out'
           />
-          <FormErrorMessage color={useColorModeValue('black', 'white')} fontSize='sm'>
+          <FormErrorMessage
+            color={useColorModeValue('black', 'white')}
+            fontSize='sm'
+          >
             {errors.message?.message}
           </FormErrorMessage>
         </FormControl>
@@ -251,7 +268,7 @@ export const Contact: React.FC = () => {
           borderRadius='lg'
           fontWeight='bold'
           fontSize='md'
-          leftIcon={<Icon as={FiSend} />}
+          leftIcon={<Text>📤</Text>}
           _hover={{
             transform: 'translateY(-2px)',
             boxShadow: useColorModeValue(
@@ -264,7 +281,7 @@ export const Contact: React.FC = () => {
           }}
           transition='all 0.2s ease-in-out'
         >
-          {t('send')}
+          Send
         </Button>
       </VStack>
     </Stack>

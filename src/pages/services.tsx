@@ -6,42 +6,45 @@ import { MainLayout } from '@components/layouts/MainLayout'
 import { NAME } from '@config/config'
 
 const ServicesPage: NextPage = () => {
-    return (
-        <>
-            <Head>
-                <title>Services - {NAME}</title>
-                <meta
-                    name="description"
-                    content="Professional software development services including backend development, full-stack solutions, cloud deployment, and technical consulting."
-                />
-                <meta name="keywords" content="backend development, full-stack development, cloud solutions, API development, database design, technical consulting" />
-                <meta property="og:title" content={`Services - ${NAME}`} />
-                <meta
-                    property="og:description"
-                    content="Professional software development services including backend development, full-stack solutions, cloud deployment, and technical consulting."
-                />
-                <meta property="og:type" content="website" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`Services - ${NAME}`} />
-                <meta
-                    name="twitter:description"
-                    content="Professional software development services including backend development, full-stack solutions, cloud deployment, and technical consulting."
-                />
-            </Head>
+  return (
+    <>
+      <Head>
+        <title>Services - {NAME}</title>
+        <meta
+          name='description'
+          content='Professional software development services including backend development, full-stack solutions, cloud deployment, and technical consulting.'
+        />
+        <meta
+          name='keywords'
+          content='backend development, full-stack development, cloud solutions, API development, database design, technical consulting'
+        />
+        <meta property='og:title' content={`Services - ${NAME}`} />
+        <meta
+          property='og:description'
+          content='Professional software development services including backend development, full-stack solutions, cloud deployment, and technical consulting.'
+        />
+        <meta property='og:type' content='website' />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:title' content={`Services - ${NAME}`} />
+        <meta
+          name='twitter:description'
+          content='Professional software development services including backend development, full-stack solutions, cloud deployment, and technical consulting.'
+        />
+      </Head>
 
-            <MainLayout>
-                <Services />
-            </MainLayout>
-        </>
-    )
+      <MainLayout>
+        <Services />
+      </MainLayout>
+    </>
+  )
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale ?? 'en', ['common'])),
-        },
-    }
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+    },
+  }
 }
 
 export default ServicesPage

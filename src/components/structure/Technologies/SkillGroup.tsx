@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import { useTranslation } from 'next-i18next'
 import {
   Box,
   Heading,
   SimpleGrid,
   VStack,
-  useColorModeValue
+  useColorModeValue,
 } from '@chakra-ui/react'
 import { motion, type Variants } from 'framer-motion'
 import type { SkillGroup as ISkillGroup } from '@utils/types'
@@ -15,7 +14,7 @@ const group: Variants = {
   hidden: {
     opacity: 0,
     y: 30,
-    scale: 0.9
+    scale: 0.9,
   },
   visible: {
     opacity: 1,
@@ -23,8 +22,8 @@ const group: Variants = {
     scale: 1,
     transition: {
       duration: 0.5,
-      ease: "easeOut"
-    }
+      ease: 'easeOut',
+    },
   },
 }
 
@@ -34,10 +33,9 @@ const getPrimaryColor = (skills: ISkillGroup['skills']) => {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface SkillGroupProps extends ISkillGroup { }
+export interface SkillGroupProps extends ISkillGroup {}
 
 export const SkillGroup: React.FC<SkillGroupProps> = ({ category, skills }) => {
-  const { t } = useTranslation('common')
   const [borderColor, setBorderColor] = useState('transparent')
   const primaryColor = getPrimaryColor(skills)
 
@@ -51,11 +49,13 @@ export const SkillGroup: React.FC<SkillGroupProps> = ({ category, skills }) => {
         p='6'
         borderColor={borderColorStatic}
         border='1px solid'
-        shadow={`8px 8px 0px 0px ${borderColor === 'transparent' ? primaryColor : borderColor}`}
+        shadow={`8px 8px 0px 0px ${
+          borderColor === 'transparent' ? primaryColor : borderColor
+        }`}
         transition='all 0.1s ease-in-out'
         _hover={{
           shadow: 'none',
-          transform: 'translate(8px, 8px)'
+          transform: 'translate(8px, 8px)',
         }}
         height='full'
       >
@@ -71,12 +71,7 @@ export const SkillGroup: React.FC<SkillGroupProps> = ({ category, skills }) => {
           >
             {category}
           </Heading>
-          <SimpleGrid
-            columns={3}
-            spacing='3'
-            flex='1'
-            alignItems='center'
-          >
+          <SimpleGrid columns={3} spacing='3' flex='1' alignItems='center'>
             {skills.map((skill) => (
               <SkillBox
                 key={skill.name}

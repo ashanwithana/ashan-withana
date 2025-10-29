@@ -1,19 +1,17 @@
-import { useTranslation } from 'next-i18next'
-import type { TFuncKey } from 'i18next'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { Button } from '@chakra-ui/react'
 
 export interface NavItemProps {
-  name: TFuncKey<'common'>
+  name: string
   href: string
   onClose: () => void
 }
 
 export const NavItem: React.FC<NavItemProps> = ({ name, href, onClose }) => {
-  const { t } = useTranslation('common')
   const { pathname } = useRouter()
-  const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
+  const isActive =
+    pathname === href || (href !== '/' && pathname.startsWith(href))
 
   return (
     <NextLink href={href} passHref legacyBehavior>
@@ -33,12 +31,12 @@ export const NavItem: React.FC<NavItemProps> = ({ name, href, onClose }) => {
         _hover={{
           bg: 'rgba(99, 102, 241, 0.15)',
           color: 'gray.900',
-          transform: 'translateX(4px)'
+          transform: 'translateX(4px)',
         }}
         transition='all 0.2s ease-in-out'
         onClick={onClose}
       >
-        {t(name)}
+        {name}
       </Button>
     </NextLink>
   )

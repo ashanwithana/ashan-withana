@@ -1,7 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { NextSeo } from 'next-seo'
-import { useTranslation } from 'next-i18next'
 import { Box, Flex, Heading, Text, VStack } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { type BlogPost as BlogPostType } from '@data/blog'
@@ -16,11 +15,12 @@ interface BlogProps {
 }
 
 const Blog: NextPage<BlogProps> = () => {
-  const { t } = useTranslation('common')
-
   return (
     <MainLayout>
-      <NextSeo title="Blog" description="Coming soon - My thoughts on software development, technology, and programming." />
+      <NextSeo
+        title='Blog'
+        description='Coming soon - My thoughts on software development, technology, and programming.'
+      />
       <MotionFlex
         minH='100vh'
         flexDir='column'
@@ -48,7 +48,8 @@ const Blog: NextPage<BlogProps> = () => {
             technology insights, and programming best practices.
           </Text>
           <Text fontSize='lg' color='whiteAlpha.800'>
-            Stay tuned for articles on Laravel, Python, .NET Core, and modern web development! 🚀
+            Stay tuned for articles on Laravel, Python, .NET Core, and modern
+            web development! 🚀
           </Text>
           <Box mt='8'>
             <Text fontSize='sm' color='whiteAlpha.700'>

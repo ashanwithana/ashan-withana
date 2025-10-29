@@ -47,18 +47,18 @@ export const FilterBar: React.FC<FilterBarProps> = ({
       animate={
         isSticky
           ? {
-            paddingTop: '1rem',
-            paddingBottom: '1rem',
-            background: [
-              'linear-gradient(90deg, #fad0c4 0%, #ffd1ff 100%)',
-              'linear-gradient(90deg, #fdcbf1 0%, #e6dee9 100%)',
-            ],
-          }
+              paddingTop: '1rem',
+              paddingBottom: '1rem',
+              background: [
+                'linear-gradient(90deg, #fad0c4 0%, #ffd1ff 100%)',
+                'linear-gradient(90deg, #fdcbf1 0%, #e6dee9 100%)',
+              ],
+            }
           : {
-            paddingTop: '4rem',
-            paddingBottom: '1.5rem',
-            background: 'white',
-          }
+              paddingTop: '4rem',
+              paddingBottom: '1.5rem',
+              background: 'white',
+            }
       }
       transition={{
         background: {

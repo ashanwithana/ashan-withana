@@ -1,7 +1,7 @@
 import { Box, type BoxProps } from '@chakra-ui/react'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface SectionDividerProps extends BoxProps { }
+interface SectionDividerProps extends BoxProps {}
 
 export const SectionDivider: React.FC<SectionDividerProps> = (props) => (
   <Box

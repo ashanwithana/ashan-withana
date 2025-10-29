@@ -1,4 +1,3 @@
-import { useTranslation } from 'next-i18next'
 import {
   AspectRatio,
   Image,
@@ -22,9 +21,8 @@ export const BlogPost: React.FC<BlogPostType> = ({
   tags,
   publishedAt,
   readingTime,
-  slug
+  slug,
 }) => {
-  const { t } = useTranslation('blog')
   const posthog = usePostHog()
   const postTags = tags.length ? tags : ['General']
 
@@ -32,7 +30,7 @@ export const BlogPost: React.FC<BlogPostType> = ({
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     })
   }
 
@@ -46,7 +44,7 @@ export const BlogPost: React.FC<BlogPostType> = ({
       transition='transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out'
       _hover={{
         transform: 'translateY(-4px)',
-        boxShadow: '0 8px 25px rgba(0, 0, 0, 0.15)'
+        boxShadow: '0 8px 25px rgba(0, 0, 0, 0.15)',
       }}
     >
       <Flex h='full' flexDir='column' align='stretch'>
@@ -82,7 +80,9 @@ export const BlogPost: React.FC<BlogPostType> = ({
           <Text fontWeight='bold' fontSize='lg' mb='2'>
             <NextLink href={`/blog/${slug}`} passHref legacyBehavior>
               <LinkOverlay
-                onClick={() => posthog.capture('blog_post_clicked', { title, slug })}
+                onClick={() =>
+                  posthog.capture('blog_post_clicked', { title, slug })
+                }
               >
                 {title}
               </LinkOverlay>
@@ -101,7 +101,12 @@ export const BlogPost: React.FC<BlogPostType> = ({
           </Flex>
           <HStack wrap='wrap' spacing='2'>
             {postTags.map((tag: string) => (
-              <Badge key={tag} variant='subtle' colorScheme='blue' fontSize='xs'>
+              <Badge
+                key={tag}
+                variant='subtle'
+                colorScheme='blue'
+                fontSize='xs'
+              >
                 {tag}
               </Badge>
             ))}

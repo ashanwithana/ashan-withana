@@ -1,4 +1,3 @@
-import { useTranslation } from 'next-i18next'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import {
@@ -23,7 +22,6 @@ import { NAME, config } from '@config/config'
 import { Menu } from './Menu'
 
 export const Header: React.FC = () => {
-  const { t } = useTranslation('common')
   const { isOpen, onToggle, onClose } = useDisclosure()
   const posthog = usePostHog()
   const router = useRouter()
@@ -33,8 +31,14 @@ export const Header: React.FC = () => {
     'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 50%, rgba(236, 72, 153, 0.1) 100%), rgba(255, 255, 255, 0.9)',
     'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%), rgba(26, 32, 44, 0.9)'
   )
-  const activeBg = useColorModeValue('rgba(99, 102, 241, 0.15)', 'rgba(168, 85, 247, 0.2)')
-  const borderColor = useColorModeValue('rgba(99, 102, 241, 0.2)', 'rgba(168, 85, 247, 0.3)')
+  const activeBg = useColorModeValue(
+    'rgba(99, 102, 241, 0.15)',
+    'rgba(168, 85, 247, 0.2)'
+  )
+  const borderColor = useColorModeValue(
+    'rgba(99, 102, 241, 0.2)',
+    'rgba(168, 85, 247, 0.3)'
+  )
   const textColor = useColorModeValue('gray.700', 'gray.300')
   const activeTextColor = useColorModeValue('black', 'white')
   const hoverTextColor = useColorModeValue('gray.900', 'white')
@@ -75,7 +79,7 @@ export const Header: React.FC = () => {
               _hover={{
                 bg: activeBg,
                 color: hoverTextColor,
-                transform: 'translateY(-1px)'
+                transform: 'translateY(-1px)',
               }}
               transition='all 0.2s ease-in-out'
             >
@@ -98,11 +102,11 @@ export const Header: React.FC = () => {
               _hover={{
                 bg: activeBg,
                 color: hoverTextColor,
-                transform: 'translateY(-1px)'
+                transform: 'translateY(-1px)',
               }}
               transition='all 0.2s ease-in-out'
             >
-              {t('projects')}
+              Projects
             </Button>
           </NextLink>
 
@@ -121,11 +125,11 @@ export const Header: React.FC = () => {
               _hover={{
                 bg: activeBg,
                 color: hoverTextColor,
-                transform: 'translateY(-1px)'
+                transform: 'translateY(-1px)',
               }}
               transition='all 0.2s ease-in-out'
             >
-              {t('services')}
+              Services
             </Button>
           </NextLink>
 
@@ -134,7 +138,7 @@ export const Header: React.FC = () => {
             <IconButton
               as='a'
               aria-label='Home'
-              icon={<FiHome />}
+              icon={<Text>🏠</Text>}
               variant='ghost'
               size='sm'
               color={isActiveRoute('/') ? activeTextColor : textColor}
@@ -143,7 +147,7 @@ export const Header: React.FC = () => {
               _hover={{
                 bg: activeBg,
                 color: hoverTextColor,
-                transform: 'translateY(-1px) scale(1.05)'
+                transform: 'translateY(-1px) scale(1.05)',
               }}
               transition='all 0.2s ease-in-out'
             />
@@ -156,7 +160,9 @@ export const Header: React.FC = () => {
               variant='ghost'
               size='sm'
               fontWeight='medium'
-              color={isActiveRoute('/contributions') ? activeTextColor : textColor}
+              color={
+                isActiveRoute('/contributions') ? activeTextColor : textColor
+              }
               bg={isActiveRoute('/contributions') ? activeBg : 'transparent'}
               borderRadius='full'
               px='4'
@@ -165,11 +171,11 @@ export const Header: React.FC = () => {
               _hover={{
                 bg: activeBg,
                 color: hoverTextColor,
-                transform: 'translateY(-1px)'
+                transform: 'translateY(-1px)',
               }}
               transition='all 0.2s ease-in-out'
             >
-              {t('contributions')}
+              Contributions
             </Button>
           </NextLink>
 
@@ -188,11 +194,11 @@ export const Header: React.FC = () => {
               _hover={{
                 bg: activeBg,
                 color: hoverTextColor,
-                transform: 'translateY(-1px)'
+                transform: 'translateY(-1px)',
               }}
               transition='all 0.2s ease-in-out'
             >
-              {t('blog')}
+              Blog
             </Button>
           </NextLink>
 
@@ -210,16 +216,21 @@ export const Header: React.FC = () => {
               _hover={{
                 bg: activeBg,
                 color: hoverTextColor,
-                transform: 'translateY(-1px)'
+                transform: 'translateY(-1px)',
               }}
               transition='all 0.2s ease-in-out'
             >
-              {t('contact')}
+              Contact
             </Button>
           </NextLink>
 
           {/* Divider */}
-          <Box w='1px' h='6' bg='linear-gradient(to bottom, #6366f1, #a855f7)' mx='2' />
+          <Box
+            w='1px'
+            h='6'
+            bg='linear-gradient(to bottom, #6366f1, #a855f7)'
+            mx='2'
+          />
 
           {/* Social Icons */}
           <IconButton
@@ -228,7 +239,7 @@ export const Header: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
             aria-label='GitHub Profile'
-            icon={<FaGithub />}
+            icon={<Text>🐙</Text>}
             variant='ghost'
             size='sm'
             borderRadius='full'
@@ -236,10 +247,12 @@ export const Header: React.FC = () => {
             _hover={{
               bg: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
               color: 'white',
-              transform: 'translateY(-1px) scale(1.05)'
+              transform: 'translateY(-1px) scale(1.05)',
             }}
             transition='all 0.2s ease-in-out'
-            onClick={() => posthog.capture('github_clicked', { location: 'header' })}
+            onClick={() =>
+              posthog.capture('github_clicked', { location: 'header' })
+            }
           />
 
           <IconButton
@@ -248,7 +261,7 @@ export const Header: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
             aria-label='LinkedIn Profile'
-            icon={<FaLinkedinIn />}
+            icon={<Text>💼</Text>}
             variant='ghost'
             size='sm'
             borderRadius='full'
@@ -256,16 +269,22 @@ export const Header: React.FC = () => {
             _hover={{
               bg: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
               color: 'white',
-              transform: 'translateY(-1px) scale(1.05)'
+              transform: 'translateY(-1px) scale(1.05)',
             }}
             transition='all 0.2s ease-in-out'
-            onClick={() => posthog.capture('linkedin_clicked', { location: 'header' })}
+            onClick={() =>
+              posthog.capture('linkedin_clicked', { location: 'header' })
+            }
           />
 
           {/* Color Mode Toggle */}
           <IconButton
-            aria-label={colorMode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-            icon={colorMode === 'light' ? <MdDarkMode /> : <MdLightMode />}
+            aria-label={
+              colorMode === 'light'
+                ? 'Switch to dark mode'
+                : 'Switch to light mode'
+            }
+            icon={<Text>{colorMode === 'light' ? '🌙' : '☀️'}</Text>}
             variant='ghost'
             size='sm'
             borderRadius='full'
@@ -273,12 +292,15 @@ export const Header: React.FC = () => {
             _hover={{
               bg: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
               color: 'white',
-              transform: 'translateY(-1px) scale(1.05)'
+              transform: 'translateY(-1px) scale(1.05)',
             }}
             transition='all 0.2s ease-in-out'
             onClick={() => {
               toggleColorMode()
-              posthog.capture('color_mode_toggled', { mode: colorMode === 'light' ? 'dark' : 'light', location: 'header' })
+              posthog.capture('color_mode_toggled', {
+                mode: colorMode === 'light' ? 'dark' : 'light',
+                location: 'header',
+              })
             }}
           />
         </HStack>
@@ -314,8 +336,12 @@ export const Header: React.FC = () => {
 
         <HStack spacing='2'>
           <IconButton
-            aria-label={colorMode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-            icon={colorMode === 'light' ? <MdDarkMode /> : <MdLightMode />}
+            aria-label={
+              colorMode === 'light'
+                ? 'Switch to dark mode'
+                : 'Switch to light mode'
+            }
+            icon={<Text>{colorMode === 'light' ? '🌙' : '☀️'}</Text>}
             variant='ghost'
             size='sm'
             borderRadius='full'
@@ -323,18 +349,21 @@ export const Header: React.FC = () => {
             _hover={{
               bg: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
               color: 'white',
-              transform: 'scale(1.05)'
+              transform: 'scale(1.05)',
             }}
             transition='all 0.2s ease-in-out'
             onClick={() => {
               toggleColorMode()
-              posthog.capture('color_mode_toggled', { mode: colorMode === 'light' ? 'dark' : 'light', location: 'mobile-header' })
+              posthog.capture('color_mode_toggled', {
+                mode: colorMode === 'light' ? 'dark' : 'light',
+                location: 'mobile-header',
+              })
             }}
           />
 
           <IconButton
-            aria-label={t(isOpen ? 'close-menu' : 'open-menu')}
-            icon={isOpen ? <VscChromeClose /> : <HiOutlineMenuAlt4 />}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            icon={<Text>{isOpen ? '✕' : '☰'}</Text>}
             variant='ghost'
             size='sm'
             borderRadius='full'
@@ -342,7 +371,7 @@ export const Header: React.FC = () => {
             _hover={{
               bg: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
               color: 'white',
-              transform: 'scale(1.05)'
+              transform: 'scale(1.05)',
             }}
             transition='all 0.2s ease-in-out'
             onClick={onToggle}
