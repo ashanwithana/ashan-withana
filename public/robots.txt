@@ -1,0 +1,15 @@
+# *
+User-agent: *
+Disallow: /api/
+Disallow: /locales/
+Disallow: /gpg.txt
+
+# https://platform.openai.com/docs/gptbot
+User-agent: GPTBot
+Disallow: /
+
+# Host
+Host: https://ashanwithana.dev
+
+# Sitemaps
+Sitemap: https://ashanwithana.dev/sitemap.xml
