@@ -9,65 +9,23 @@ import {
   Button,
   Grid,
   GridItem,
-  Icon,
   useColorModeValue,
   Card,
   CardBody,
   List,
   ListItem,
-  ListIcon,
 } from '@chakra-ui/react'
-import { FiCheck, FiMail, FiStar } from 'react-icons/fi'
-import {
-  SiReact,
-  SiNodedotjs,
-  SiTypescript,
-  SiPostgresql,
-  SiRedis,
-  SiDocker,
-  SiNextdotjs,
-  SiChakraui,
-  SiVercel,
-  SiExpo,
-  SiFirebase,
-} from 'react-icons/si'
+import { AppIcon } from '@components/icons'
 import { services, type Service } from '@data/services'
 import { config } from '@config/config'
 
-const getTechIcon = (tech: string) => {
-  const techIcons: { [key: string]: string } = {
-    React: '⚛️',
-    'Node.js': '🟢',
-    TypeScript: '🔷',
-    PostgreSQL: '🐘',
-    Redis: '🔴',
-    Docker: '🐳',
-    'Next.js': '▲',
-    'Chakra UI': '⚡',
-    Vercel: '▲',
-    'React Native': '📱',
-    Expo: '📲',
-    Firebase: '🔥',
-    'REST API': 'REST',
-    GraphQL: 'GQL',
-    Webhooks: 'WH',
-    OAuth: 'OAuth',
-    Postman: 'POST',
-    'App Store': '📱',
-  }
+const renderTechIcon = (tech: string) => {
+  // Return full technology name in lowercase
   return (
-    <Text fontSize='xs' fontWeight='bold'>
-      {techIcons[tech] || tech}
+    <Text fontSize='xs' fontWeight='medium'>
+      {tech.toLowerCase()}
     </Text>
   )
-}
-
-const renderStars = (rating: number) => {
-  return Array.from({ length: 5 }, (_, i) => (
-    <Text key={i} color={i < rating ? 'gold' : 'gray.300'} fontSize='sm'>
-      {i < rating ? '⭐' : '☆'}
-    </Text>
-  ))
 }
 
 interface ServiceCardProps {
@@ -111,8 +69,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
           fontSize='xs'
           fontWeight='bold'
           boxShadow='0 4px 15px rgba(0, 0, 0, 0.2)'
+          display='flex'
+          alignItems='center'
+          gap={1}
         >
-          <Text mr={1}>⭐</Text>
+          <AppIcon iconName='star' fontSize='xs' />
           Popular
         </Badge>
       )}
@@ -151,18 +112,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
               {service.description}
             </Text>
 
-            {/* Star Rating */}
-            <HStack spacing={1} justify='center'>
-              {renderStars(service.rating)}
-              <Text
-                fontSize='xs'
-                color={useColorModeValue('gray.500', 'gray.400')}
-                ml={2}
-              >
-                ({service.rating}/5)
-              </Text>
-            </HStack>
-
             {/* Technology Icons */}
             <HStack spacing={2} justify='center' flexWrap='wrap'>
               {service.technologies.slice(0, 5).map((tech, index) => (
@@ -173,8 +122,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
                   borderRadius='md'
                   title={tech}
                   fontSize='sm'
+                  display='flex'
+                  alignItems='center'
+                  justifyContent='center'
+                  color={useColorModeValue('gray.700', 'gray.300')}
                 >
-                  {getTechIcon(tech)}
+                  {renderTechIcon(tech)}
                 </Box>
               ))}
             </HStack>
@@ -192,14 +145,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
             <List spacing={{ base: 2, lg: 1 }}>
               {service.features.slice(0, 4).map((feature, index) => (
                 <ListItem key={index} display='flex' alignItems='flex-start'>
-                  <Text
+                  <AppIcon
+                    iconName='checkCircle'
                     color={service.popular ? 'purple.500' : 'green.500'}
                     fontSize={{ base: 'lg', lg: 'md' }}
                     mt={0.5}
                     mr={2}
-                  >
-                    ✓
-                  </Text>
+                  />
                   <Text
                     fontSize={{ base: 'sm', lg: 'xs' }}
                     color={useColorModeValue('gray.700', 'gray.300')}
@@ -220,7 +172,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
             color={useColorModeValue('white', 'black')}
             size={{ base: 'lg', lg: 'md' }}
             height={{ base: '12', lg: '10' }}
-            leftIcon={<Text>✉️</Text>}
+            leftIcon={<AppIcon iconName='email' />}
             borderRadius='lg'
             fontWeight='bold'
             fontSize={{ base: 'md', lg: 'sm' }}
@@ -320,7 +272,7 @@ export const Services: React.FC = () => {
                 bg={useColorModeValue('black', 'white')}
                 color={useColorModeValue('white', 'black')}
                 size='md'
-                leftIcon={<Text>✉️</Text>}
+                leftIcon={<AppIcon iconName='email' />}
                 w='full'
                 maxW='xs'
                 _hover={{
@@ -333,7 +285,7 @@ export const Services: React.FC = () => {
               <Button
                 variant='outline'
                 size='md'
-                leftIcon={<Text>⭐</Text>}
+                leftIcon={<AppIcon iconName='star' />}
                 borderColor={useColorModeValue('gray.300', 'gray.600')}
                 w='full'
                 maxW='xs'
@@ -352,7 +304,7 @@ export const Services: React.FC = () => {
                 bg={useColorModeValue('black', 'white')}
                 color={useColorModeValue('white', 'black')}
                 size='lg'
-                leftIcon={<Text>✉️</Text>}
+                leftIcon={<AppIcon iconName='email' />}
                 _hover={{
                   bg: useColorModeValue('gray.800', 'gray.200'),
                   transform: 'translateY(-2px)',

@@ -5,17 +5,11 @@ import {
   HStack,
   Badge,
   Link,
-  Icon,
   Flex,
   Tooltip,
   useColorModeValue,
 } from '@chakra-ui/react'
-import {
-  FaGithub,
-  FaStar,
-  FaCodeBranch,
-  FaExternalLinkAlt,
-} from 'react-icons/fa'
+import { AppIcon } from '@components/icons'
 import { usePostHog } from 'posthog-js/react'
 import { motion } from 'framer-motion'
 import { ProcessedRepo, getLanguageColor, formatDate } from '@data/github'
@@ -23,7 +17,6 @@ import { ProcessedRepo, getLanguageColor, formatDate } from '@data/github'
 const MotionBox = motion(Box)
 
 export const ProjectCard: React.FC<ProcessedRepo> = ({
-  id,
   name,
   description,
   url,
@@ -112,7 +105,7 @@ export const ProjectCard: React.FC<ProcessedRepo> = ({
             _hover={{ textDecoration: 'none' }}
           >
             <HStack>
-              <Text fontSize='lg'>🐙</Text>
+              <AppIcon iconName='github' fontSize='lg' />
               <Text
                 fontSize={{ base: 'md', md: 'lg' }}
                 fontWeight='bold'
@@ -184,7 +177,7 @@ export const ProjectCard: React.FC<ProcessedRepo> = ({
             {stars > 0 && (
               <HStack spacing='1'>
                 <Text fontSize='xs' color='yellow.400'>
-                  ⭐
+                  <AppIcon iconName='star' fontSize='sm' />
                 </Text>
                 <Text fontSize='xs' color={textColor}>
                   {stars}

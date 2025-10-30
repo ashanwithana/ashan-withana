@@ -12,11 +12,7 @@ import {
   useColorModeValue,
   useColorMode,
 } from '@chakra-ui/react'
-import { HiOutlineMenuAlt4 } from 'react-icons/hi'
-import { VscChromeClose } from 'react-icons/vsc'
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
-import { MdLightMode, MdDarkMode } from 'react-icons/md'
-import { FiHome } from 'react-icons/fi'
+import { AppIcon } from '@components/icons'
 import { usePostHog } from 'posthog-js/react'
 import { NAME, config } from '@config/config'
 import { Menu } from './Menu'
@@ -138,7 +134,7 @@ export const Header: React.FC = () => {
             <IconButton
               as='a'
               aria-label='Home'
-              icon={<Text>🏠</Text>}
+              icon={<AppIcon iconName='home' strokeWidth={1} />}
               variant='ghost'
               size='sm'
               color={isActiveRoute('/') ? activeTextColor : textColor}
@@ -239,7 +235,7 @@ export const Header: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
             aria-label='GitHub Profile'
-            icon={<Text>🐙</Text>}
+            icon={<AppIcon iconName='github' strokeWidth={2.5} />}
             variant='ghost'
             size='sm'
             borderRadius='full'
@@ -261,7 +257,7 @@ export const Header: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
             aria-label='LinkedIn Profile'
-            icon={<Text>💼</Text>}
+            icon={<AppIcon iconName='linkedin' strokeWidth={2.5} />}
             variant='ghost'
             size='sm'
             borderRadius='full'
@@ -284,7 +280,12 @@ export const Header: React.FC = () => {
                 ? 'Switch to dark mode'
                 : 'Switch to light mode'
             }
-            icon={<Text>{colorMode === 'light' ? '🌙' : '☀️'}</Text>}
+            icon={
+              <AppIcon
+                iconName={colorMode === 'light' ? 'darkMode' : 'lightMode'}
+                strokeWidth={2.5}
+              />
+            }
             variant='ghost'
             size='sm'
             borderRadius='full'
@@ -341,7 +342,12 @@ export const Header: React.FC = () => {
                 ? 'Switch to dark mode'
                 : 'Switch to light mode'
             }
-            icon={<Text>{colorMode === 'light' ? '🌙' : '☀️'}</Text>}
+            icon={
+              <AppIcon
+                iconName={colorMode === 'light' ? 'darkMode' : 'lightMode'}
+                strokeWidth={2.5}
+              />
+            }
             variant='ghost'
             size='sm'
             borderRadius='full'
@@ -363,7 +369,9 @@ export const Header: React.FC = () => {
 
           <IconButton
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            icon={<Text>{isOpen ? '✕' : '☰'}</Text>}
+            icon={
+              <AppIcon iconName={isOpen ? 'close' : 'menu'} strokeWidth={2.5} />
+            }
             variant='ghost'
             size='sm'
             borderRadius='full'

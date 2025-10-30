@@ -1,8 +1,8 @@
-import { Box, IconButton, Link, Tooltip, Text } from '@chakra-ui/react'
-import { FaLinkedinIn, FaGithub } from 'react-icons/fa'
+import { Box, IconButton, Link, Tooltip } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { usePostHog } from 'posthog-js/react'
 import { config } from '@config/config'
+import { AppIcon } from '../../icons'
 
 const MotionBox = motion(Box)
 const MotionIconButton = motion(IconButton)
@@ -45,7 +45,7 @@ export const FloatingSocial: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
             aria-label='GitHub Profile'
-            icon={<Text>🐙</Text>}
+            icon={<AppIcon iconName='github' boxSize={5} />}
             size={{ base: 'md', md: 'lg' }}
             borderRadius='full'
             background='linear-gradient(135deg, #333 0%, #24292e 100%)'
@@ -104,7 +104,7 @@ export const FloatingSocial: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
             aria-label='LinkedIn Profile'
-            icon={<Text>💼</Text>}
+            icon={<AppIcon iconName='linkedin' boxSize={5} />}
             size={{ base: 'md', md: 'lg' }}
             borderRadius='full'
             background='linear-gradient(135deg, #0077b5 0%, #00a0dc 100%)'

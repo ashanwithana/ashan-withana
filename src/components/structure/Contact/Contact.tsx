@@ -14,10 +14,8 @@ import {
   useColorModeValue,
   useToast,
   VStack,
-  Icon,
 } from '@chakra-ui/react'
-import { FiSend, FiMail } from 'react-icons/fi'
-import { FaLinkedinIn } from 'react-icons/fa'
+import { AppIcon } from '@components/icons'
 import React from 'react'
 import { usePostHog } from 'posthog-js/react'
 import { useForm } from 'react-hook-form'
@@ -124,7 +122,7 @@ export const Contact: React.FC = () => {
               display='flex'
               alignItems='center'
             >
-              <Text>✉️</Text>
+              <AppIcon iconName='email' />
             </Box>
             <VStack spacing='1' align='flex-start'>
               <Text
@@ -153,7 +151,7 @@ export const Contact: React.FC = () => {
               display='flex'
               alignItems='center'
             >
-              <Text>💼</Text>
+              <AppIcon iconName='linkedin' />
             </Box>
             <VStack spacing='1' align='flex-start'>
               <Text
@@ -268,7 +266,7 @@ export const Contact: React.FC = () => {
           borderRadius='lg'
           fontWeight='bold'
           fontSize='md'
-          leftIcon={<Text>📤</Text>}
+          leftIcon={<AppIcon iconName='send' />}
           _hover={{
             transform: 'translateY(-2px)',
             boxShadow: useColorModeValue(

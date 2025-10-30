@@ -119,7 +119,7 @@ export const Contribution: React.FC<ContributionProps> = ({
             alignItems='center'
             fontWeight='bold'
           >
-            •
+            <Icon as={language.icon as any} boxSize='6' />
           </Box>
         </Flex>
       </Flex>

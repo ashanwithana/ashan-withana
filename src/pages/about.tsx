@@ -9,25 +9,13 @@ import {
   VStack,
   HStack,
   SimpleGrid,
-  Card,
-  CardBody,
   Badge,
-  Icon,
   useColorModeValue,
-  Divider,
-  Avatar,
   Flex,
   Image,
   Link,
 } from '@chakra-ui/react'
-import {
-  FiCalendar,
-  FiMapPin,
-  FiAward,
-  FiBriefcase,
-  FiExternalLink,
-} from 'react-icons/fi'
-import { FaGraduationCap } from 'react-icons/fa'
+import { AppIcon } from '../components/icons/IconMap'
 import { MainLayout } from '@components/layouts/MainLayout'
 import { config } from '@config/config'
 import {
@@ -217,7 +205,7 @@ export default function AboutPage() {
             <VStack spacing={6} align='stretch'>
               <Heading as='h2' size='xl' variant='sectionTitle'>
                 <Text mr={3} fontSize='xl'>
-                  💼
+                  <AppIcon iconName='briefcase' fontSize='xl' />
                 </Text>
                 Work Experience
               </Heading>
@@ -306,7 +294,7 @@ export default function AboutPage() {
                           </Text>
                           <HStack spacing={1}>
                             <Text fontSize='sm' color={textColor}>
-                              📍
+                              <AppIcon iconName='location' fontSize='sm' />
                             </Text>
                             <Text fontSize='sm' color={textColor}>
                               {job.location}
@@ -371,7 +359,7 @@ export default function AboutPage() {
             <VStack spacing={6} align='stretch'>
               <Heading as='h2' size='xl' variant='sectionTitle'>
                 <Text mr={3} fontSize='xl'>
-                  🎓
+                  <AppIcon iconName='education' fontSize='xl' />
                 </Text>
                 Education
               </Heading>
@@ -417,7 +405,7 @@ export default function AboutPage() {
                       <HStack spacing={4} wrap='wrap'>
                         <HStack spacing={1}>
                           <Text fontSize='sm' color={textColor}>
-                            📅
+                            <AppIcon iconName='calendar' fontSize='sm' />
                           </Text>
                           <Text fontSize='sm' color={textColor}>
                             {education.year}
@@ -425,7 +413,7 @@ export default function AboutPage() {
                         </HStack>
                         <HStack spacing={1}>
                           <Text fontSize='sm' color={textColor}>
-                            📍
+                            <AppIcon iconName='location' fontSize='sm' />
                           </Text>
                           <Text fontSize='sm' color={textColor}>
                             {education.location}
@@ -454,7 +442,7 @@ export default function AboutPage() {
             <VStack spacing={6} align='stretch'>
               <Heading as='h2' size='xl' variant='sectionTitle'>
                 <Text mr={3} fontSize='xl'>
-                  🏆
+                  <AppIcon iconName='trophy' fontSize='xl' />
                 </Text>
                 Languages
               </Heading>

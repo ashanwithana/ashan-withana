@@ -77,7 +77,7 @@ export const SkillBox: React.FC<SkillProps> = ({
             fontWeight='bold'
             transition='all 0.2s ease-in-out'
           >
-            •
+            <Icon as={icon as any} boxSize='6' />
           </Box>
           <Text
             fontSize='2xs'

@@ -8,7 +8,7 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
+import { AppIcon } from '@components/icons'
 import { usePostHog } from 'posthog-js/react'
 import { config } from '@config/config'
 import { NavItem, type NavItemProps } from './NavItem'
@@ -83,7 +83,7 @@ export const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
                 target='_blank'
                 rel='noopener noreferrer'
                 aria-label='GitHub Profile'
-                icon={<Text>🐙</Text>}
+                icon={<AppIcon iconName='github' />}
                 variant='ghost'
                 size='lg'
                 borderRadius='full'
@@ -105,7 +105,7 @@ export const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
                 target='_blank'
                 rel='noopener noreferrer'
                 aria-label='LinkedIn Profile'
-                icon={<Text>💼</Text>}
+                icon={<AppIcon iconName='linkedin' />}
                 variant='ghost'
                 size='lg'
                 borderRadius='full'
