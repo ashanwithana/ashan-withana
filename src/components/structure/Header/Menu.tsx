@@ -5,7 +5,6 @@ import {
   Link,
   Divider,
   useColorModeValue,
-  Text,
 } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { AppIcon } from '@components/icons'

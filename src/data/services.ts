@@ -1,8 +1,10 @@
+import { IconName } from '@components/icons'
+
 export interface Service {
   id: string
   title: string
   description: string
-  icon: string
+  icon: IconName
   technologies: string[]
   features: string[]
   rating: number
@@ -16,8 +18,8 @@ export const services: Service[] = [
     title: 'Backend Development',
     description:
       'Powerful server-side solutions with modern architecture and database integration.',
-    icon: '⚙️',
-    technologies: ['Node.js', 'TypeScript', 'PostgreSQL', 'Redis', 'Docker'],
+    icon: 'server',
+    technologies: ['Laravel', 'TypeScript', 'Node.js', '.NET', 'C#'],
     features: [
       'RESTful & GraphQL APIs',
       'Database Design & Optimization',
@@ -33,8 +35,8 @@ export const services: Service[] = [
     title: 'Full-Stack Web Development',
     description:
       'Modern web applications with cutting-edge technologies and seamless user experiences.',
-    icon: '🌐',
-    technologies: ['React', 'Next.js', 'TypeScript', 'Chakra UI', 'Vercel'],
+    icon: 'monitor',
+    technologies: ['Blade', 'Angular', 'Next.js', 'React', 'Vue.js'],
     features: [
       'Cutting-Edge Frontend Frameworks',
       'Progressive Web Apps (PWA)',
@@ -49,13 +51,11 @@ export const services: Service[] = [
     title: 'Mobile App Development',
     description:
       'Cross-platform mobile applications with native performance and modern UI/UX.',
-    icon: '📱',
+    icon: 'smartphone',
     technologies: [
+      'Flutter',
       'React Native',
-      'Expo',
-      'TypeScript',
       'Firebase',
-      'App Store',
     ],
     features: [
       'React Native Development',
@@ -72,8 +72,8 @@ export const services: Service[] = [
     title: 'API Integration & Services',
     description:
       'Seamless system integration with third-party services and microservices architecture.',
-    icon: '🔗',
-    technologies: ['REST API', 'GraphQL', 'Webhooks', 'OAuth', 'Postman'],
+    icon: 'layers',
+    technologies: ['REST API', 'GraphQL', 'Webhooks', 'OAuth'],
     features: [
       'Third-party API Integration',
       'Microservices Architecture',

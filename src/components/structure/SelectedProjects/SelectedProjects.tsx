@@ -2,7 +2,6 @@ import { useTranslation } from 'next-i18next'
 import { Box, Heading, VStack } from '@chakra-ui/react'
 import { motion, type Variants } from 'framer-motion'
 import { projects } from '@data/projects'
-import { OtherProjectsMarquee } from '../Portfolio/OtherProjectsMarquee'
 import { ProjectShowcase } from '../Portfolio/ProjectShowcase'
 
 const container: Variants = {

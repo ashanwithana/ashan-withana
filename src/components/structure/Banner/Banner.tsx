@@ -11,7 +11,6 @@ import {
 } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { usePostHog } from 'posthog-js/react'
-import { config } from '@config/config'
 import { ButtonArrow } from '../../meta'
 
 const MotionFlex = motion(Flex)

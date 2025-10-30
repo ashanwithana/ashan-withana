@@ -4,7 +4,6 @@ import {
   Text,
   HStack,
   IconButton,
-  Stack,
   useColorModeValue,
   useColorMode,
 } from '@chakra-ui/react'
@@ -43,7 +42,8 @@ export const Footer: React.FC = () => {
       {/* Left side - Copyright & Location */}
       <HStack spacing='4' fontSize='sm' color={textColor} fontWeight='medium'>
         <Text>
-          © {new Date().getFullYear()} {config.copyright.replace(/©\s*\d{4}\s*/, '')}
+          © {new Date().getFullYear()}{' '}
+          {config.copyright.replace(/©\s*\d{4}\s*/, '')}
         </Text>
         <Text color={useColorModeValue('gray.400', 'gray.500')}>•</Text>
         <Text>Sri Lanka 🇱🇰</Text>
@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
             color={linkColor}
             _hover={{
               color: useColorModeValue('black', 'white'),
-              textDecoration: 'none'
+              textDecoration: 'none',
             }}
             transition='color 0.2s ease'
             onClick={() =>
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
             color={linkColor}
             _hover={{
               color: useColorModeValue('black', 'white'),
-              textDecoration: 'none'
+              textDecoration: 'none',
             }}
             transition='color 0.2s ease'
             onClick={() =>
@@ -117,7 +117,7 @@ export const Footer: React.FC = () => {
           color={textColor}
           _hover={{
             color: useColorModeValue('black', 'white'),
-            bg: useColorModeValue('gray.100', 'gray.700')
+            bg: useColorModeValue('gray.100', 'gray.700'),
           }}
           onClick={() => {
             toggleColorMode()
@@ -134,7 +134,7 @@ export const Footer: React.FC = () => {
           color={textColor}
           _hover={{
             color: useColorModeValue('black', 'white'),
-            bg: useColorModeValue('gray.100', 'gray.700')
+            bg: useColorModeValue('gray.100', 'gray.700'),
           }}
           onClick={() => window.scrollTo(0, 0)}
         />

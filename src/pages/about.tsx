@@ -16,6 +16,7 @@ import {
   Link,
 } from '@chakra-ui/react'
 import { AppIcon } from '../components/icons/IconMap'
+import { PersonSchema, BreadcrumbSchema } from '@components/seo'
 import { MainLayout } from '@components/layouts/MainLayout'
 import { config } from '@config/config'
 import {
@@ -68,6 +69,13 @@ export default function AboutPage() {
 
   return (
     <>
+      <PersonSchema />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://ashanwithana.dev' },
+          { name: 'About', url: 'https://ashanwithana.dev/about' },
+        ]}
+      />
       <NextSeo
         title='About Me - Ashan Withana | Software Developer'
         description="Learn more about Ashan Withana's background, education qualifications, and professional journey in software development. University of Moratuwa graduate specializing in full-stack development."

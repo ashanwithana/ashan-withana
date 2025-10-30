@@ -28,7 +28,7 @@ interface BlogPostPageProps {
 }
 
 const BlogPostPage: NextPage<BlogPostPageProps> = ({ post }) => {
-  const { t } = useTranslation('common')
+  const { t: _ } = useTranslation('common')
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {

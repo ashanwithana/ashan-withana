@@ -1,11 +1,4 @@
-import {
-  SiJavascript,
-  SiTypescript,
-  SiLaravel,
-  SiReact,
-  SiFlutter,
-  SiDotnet,
-} from 'react-icons/si'
+import { SiTypescript, SiLaravel, SiFlutter, SiDotnet } from 'react-icons/si'
 import type { ContributionProps } from '@components/structure/Contributions/Contribution'
 
 export const contributions: ContributionProps[] = [

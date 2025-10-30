@@ -12,6 +12,7 @@ import {
   GitHubMarquee,
   LinkedInMarquee,
 } from '@components/structure'
+import { PersonSchema } from '@components/seo'
 import { useLogMessage } from '@utils/hooks/use-log-message'
 import { config } from '@config/config'
 
@@ -20,6 +21,7 @@ const Home: NextPage = () => {
 
   return (
     <MainLayout>
+      <PersonSchema includeOrganization />
       <Banner />
       <SectionDivider />
       <ServicesHint />

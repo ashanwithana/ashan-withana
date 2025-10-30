@@ -1,9 +1,7 @@
-import { IoLogoPwa } from 'react-icons/io5'
 import {
   SiAmazonwebservices,
   SiAngular,
   SiBootstrap,
-  SiSharp,
   SiCss3,
   SiDotnet,
   SiExpress,

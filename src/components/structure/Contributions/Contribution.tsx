@@ -14,7 +14,6 @@ import {
   Tooltip,
 } from '@chakra-ui/react'
 import type { RoleType, Skill } from '@utils/types'
-import { config } from '@config/config'
 
 export interface ContributionProps {
   user: string
@@ -119,7 +118,7 @@ export const Contribution: React.FC<ContributionProps> = ({
             alignItems='center'
             fontWeight='bold'
           >
-            <Icon as={language.icon as any} boxSize='6' />
+            <Icon as={language.icon as React.ComponentType} boxSize='6' />
           </Box>
         </Flex>
       </Flex>

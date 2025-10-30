@@ -21,6 +21,14 @@ import {
   FiSun,
   FiMoon,
   FiCircle,
+  FiServer,
+  FiGlobe,
+  FiSmartphone,
+  FiLink,
+  FiDatabase,
+  FiMonitor,
+  FiLayers,
+  FiZap,
 } from 'react-icons/fi'
 import {
   FaGithub,
@@ -82,6 +90,17 @@ export const IconMap = {
   location: FiMapPin,
   education: FaGraduationCap,
 
+  // Services
+  server: FiServer,
+  globe: FiGlobe,
+  smartphone: FiSmartphone,
+  mobile: FiSmartphone, // Alias
+  link: FiLink,
+  database: FiDatabase,
+  monitor: FiMonitor,
+  layers: FiLayers,
+  zap: FiZap,
+
   // Technologies
   react: FaReact,
   nodejs: FaNodeJs,
@@ -117,9 +136,8 @@ export const AppIcon: React.FC<AppIconProps> = ({
   }
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <Icon
-      as={IconComponent as any}
+      as={IconComponent as React.ComponentType}
       boxSize={`${size}px`}
       color={color}
       {...props}

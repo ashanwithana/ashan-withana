@@ -62,7 +62,7 @@ export const ServicesHint: React.FC = () => {
           maxW='6xl'
           mx='auto'
         >
-          {services.slice(0, 4).map((service, index) => {
+          {services.slice(0, 4).map((service) => {
             return (
               <Box
                 key={service.id}

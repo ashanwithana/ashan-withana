@@ -7,7 +7,6 @@ import {
   Link,
   Text,
 } from '@chakra-ui/react'
-import { FiArrowRight } from 'react-icons/fi'
 import { contributions } from '@data/contributions'
 import { Contribution } from './Contribution'
 

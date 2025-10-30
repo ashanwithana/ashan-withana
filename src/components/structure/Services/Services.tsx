@@ -35,10 +35,6 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   const cardBg = useColorModeValue('white', 'gray.800')
   const borderColor = useColorModeValue('gray.200', 'gray.600')
-  const popularBg = useColorModeValue(
-    'linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(168, 85, 247, 0.08) 50%, rgba(236, 72, 153, 0.08) 100%)',
-    'linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.15) 50%, rgba(236, 72, 153, 0.15) 100%)'
-  )
 
   return (
     <Card
@@ -82,14 +78,20 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         <VStack spacing={{ base: 4, lg: 3 }} align='stretch' height='full'>
           <VStack spacing={3} align='center' textAlign='center'>
             <Box
-              fontSize={{ base: '4xl', lg: '3xl' }}
               p={{ base: 3, lg: 2 }}
               borderRadius='xl'
               bg={useColorModeValue('gray.50', 'gray.700')}
+              display='flex'
+              alignItems='center'
+              justifyContent='center'
               role='img'
               aria-label={service.title}
             >
-              {service.icon}
+              <AppIcon
+                iconName={service.icon}
+                fontSize={{ base: '4xl', lg: '3xl' }}
+                color={useColorModeValue('gray.700', 'gray.300')}
+              />
             </Box>
             <Heading
               size={{ base: 'lg', lg: 'md' }}

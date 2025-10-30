@@ -31,7 +31,8 @@ export const config: Config = {
       ],
     },
     twitter: {
-      cardType: 'summary',
+      cardType: 'summary_large_image',
+      site: '@ashanwithana',
     },
     languageAlternates: [{ hrefLang: 'en', href: 'https://ashanwithana.dev' }],
     additionalMetaTags: [
@@ -43,8 +44,13 @@ export const config: Config = {
       {
         name: 'keywords',
         content:
-          'Software Engineer, Backend Developer, Laravel, .NET, Python, API Development',
+          'Software Engineer, Backend Developer, Laravel, .NET, Python, API Development, Full Stack Developer, React, Angular, Vue.js, Node.js, TypeScript, Database Design, Cloud Computing, Sri Lanka Developer',
       },
+      { name: 'twitter:creator', content: '@ashanwithana' },
+      { name: 'twitter:site', content: '@ashanwithana' },
+      { property: 'og:locale', content: 'en_US' },
+      { name: 'robots', content: 'index, follow' },
+      { name: 'googlebot', content: 'index, follow' },
     ],
     additionalLinkTags: [
       {
