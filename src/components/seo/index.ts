@@ -1,6 +1,6 @@
 export {
-    PersonSchema,
-    ServiceSchema,
-    ProjectSchema,
-    BreadcrumbSchema,
+  PersonSchema,
+  ServiceSchema,
+  ProjectSchema,
+  BreadcrumbSchema,
 } from './StructuredData'
